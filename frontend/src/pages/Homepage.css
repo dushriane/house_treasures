@@ -1,0 +1,138 @@
+.homepage {
+  font-family: "Roboto", sans-serif;
+}
+
+.hero {
+  background: linear-gradient(45deg, #ff7e5f, #feb47b);
+  color: #fff;
+  padding: 3rem 1rem;
+  text-align: center;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+/*
+.hero-image {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.right img {
+  filter: hue-rotate(180deg) saturate(0.8);
+}
+
+.left img {
+  filter: hue-rotate(90deg) saturate(0.8);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.right .overlay {
+  background: linear-gradient(
+    to right,
+    rgba(0, 100, 216, 0.3),
+    rgba(0, 100, 216, 0.3)
+  );
+}
+
+.left .overlay {
+  background: linear-gradient(
+    to left,
+    rgba(144, 190, 109, 0.3),
+    rgba(144, 190, 109, 0.3)
+  );
+}
+*/
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  padding: 0.8rem 1.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.hero-buttons .btn-primary {
+  background: #ff7e5f;
+}
+
+.hero-buttons .btn-secondary {
+  background: #feb47b;
+}
+
+.featured-categories {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.featured-categories h2 {
+  margin-bottom: 1.5rem;
+}
+
+.categories-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.category-card {
+  padding: 1.5rem;
+  background: #33d4f1;
+  border: 1px solid #ddd;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+}
+
+.cta {
+  background: #f4f4f4;
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.cta h2 {
+  margin-bottom: 1rem;
+}
+
+.cta .btn-primary {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  background: #33d4f1;
+  color: #fff;
+  width: fit-content;
+  margin-left: 500px;
+}
