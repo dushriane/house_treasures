@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import SignUp from "./pages/signup";
-import SignIn from "./pages/login";
-import AboutUs from "./pages/aboutUs";
-import Listings from "./pages/listings";
-import SellItem from "./pages/postItem";
+import Homepage from "./pages/Homepage.jsx";
+import SignUp from "./pages/signup.jsx";
+import SignIn from "./pages/login.jsx";
+import AboutUs from "./pages/aboutUs.jsx";
+import Listings from "./pages/listings.jsx";
+import SellItem from "./pages/postItem.jsx";
 
 const App = () => {
   return (

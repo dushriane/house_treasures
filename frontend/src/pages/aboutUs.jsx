@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./aboutUs.css";
 import Footer from "../components/footer";
 import Header from "../components/headerHomepage";
 
 const AboutUs = () => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
   return (
     <div className="about-container">
-      <Header />
+      {isSignedIn ? <SignedHeader /> : <Header />}
       <main className="about-main">
         <section className="about-header">
           <h1>About Us</h1>

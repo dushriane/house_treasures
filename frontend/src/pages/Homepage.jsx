@@ -4,6 +4,26 @@ import "./Homepage.css";
 import Footer from "../components/footer";
 import Header from "../components/headerHomepage";
 
+const steps = [
+  {
+    title: "Browse Listings",
+    icon: "🔍",
+    details: "Search through a wide range of items to find what you need.",
+  },
+  {
+    title: "Contact Seller",
+    icon: "📞",
+    details: "Reach out to sellers to negotiate and finalize your purchase.",
+  },
+  {
+    title: "Get Your Item",
+    icon: "📦",
+    details: "Meet the seller or arrange delivery to receive your item.",
+  },
+];
+
+const categories = ["Kitchen", "Furniture", "Fashion", "Books"];
+
 const Homepage = () => {
   return (
     <div className="homepage">
@@ -31,10 +51,25 @@ const Homepage = () => {
       <section className="featured-categories">
         <h2>Featured Categories</h2>
         <div className="categories-grid">
-          <div className="category-card">Kitchen</div>
-          <div className="category-card">Furniture</div>
-          <div className="category-card">Fashion</div>
-          <div className="category-card">Books</div>
+          {categories.map((category, index) => (
+            <div className="category-card" key={index}>
+              <i className={`icon-${category.toLowerCase()}`}></i>
+              <p>{category}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="how-it-works">
+        <h2 className="section-title">How It Works</h2>
+        <div className="steps-container">
+          {steps.map((step, index) => (
+            <div className="step-card" key={index}>
+              <div className="step-icon">{step.icon}</div>
+              <h3 className="step-title">{step.title}</h3>
+              <p className="step-details">{step.details}</p>
+            </div>
+          ))}
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./postItem.css";
-import Footer from "../components/footer";
-import Header from "../components/headerHomepage";
+import Footer from "../components/footer.jsx";
+import SignedHeader from "../components/header.jsx";
 
 const SellItem = () => {
   const [formData, setFormData] = useState({
@@ -21,15 +21,44 @@ const SellItem = () => {
     setFormData({ ...formData, image: e.target.files[0] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Item Details:", formData);
-    // Add your form submission logic here
+
+    const data = new FormData();
+    data.append("title", formData.title);
+    data.append("description", formData.description);
+    data.append("category", formData.category);
+    data.append("price", formData.price);
+    data.append("image", formData.image);
+
+    try {
+      const response = await fetch("/api/items", {
+        method: "POST",
+        body: data,
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Item posted successfully:", result);
+
+        setFormData({
+          title: "",
+          description: "",
+          category: "",
+          price: "",
+          image: null,
+        });
+      } else {
+        console.error("Failed to post item:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error posting item", error);
+    }
   };
 
   return (
     <div className="sell-item-container">
-      <Header />
+      <SignedHeader className="signed-header" />
       <h1 className="sell-item-title">Sell Your Treasure</h1>
       <p className="sell-item-subtitle">
         Turn your unused items into extra cash!
@@ -71,7 +100,6 @@ const SellItem = () => {
             <option value="books">Books</option>
             <option value="furniture">Furniture</option>
             <option value="fashion">Fashion</option>
-            <option value="electronics">Electronics</option>
             <option value="kitchen">Kitchen</option>
           </select>
         </div>

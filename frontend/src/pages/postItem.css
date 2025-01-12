@@ -1,23 +1,37 @@
+.signed-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 10px 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 .sell-item-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
-  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
-  min-height: 100vh;
-  font-family: "Arial", sans-serif;
+  justify-content: center;
+  padding: 60px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 .sell-item-title {
   font-size: 36px;
   color: #333;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .sell-item-subtitle {
   font-size: 18px;
   color: #555;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .sell-item-form {
@@ -27,6 +41,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
+  transition: box-shadow 0.3s ease;
+}
+
+.sell-item-form:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .form-group {
@@ -48,6 +67,7 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
@@ -72,9 +92,28 @@
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .submit-button:hover {
   background-color: #e85a4f;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .sell-item-title {
+    font-size: 28px;
+  }
+
+  .sell-item-subtitle {
+    font-size: 16px;
+  }
+
+  .sell-item-form {
+    padding: 20px;
+  }
+
+  .submit-button {
+    font-size: 14px;
+  }
 }

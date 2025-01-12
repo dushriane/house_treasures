@@ -11,6 +11,9 @@ const Footer = () => {
           <h4>Quick Links</h4>
           <ul>
             <li>
+              <Link to="/">Home Page</Link>
+            </li>
+            <li>
               <Link to="/aboutUs">About Us</Link>
             </li>
             <li>
@@ -19,39 +22,24 @@ const Footer = () => {
             <li>
               <Link to="/postItem">Sell Your Item</Link>
             </li>
-            <li>
-              <Link to="/">Home Page</Link>
-            </li>
           </ul>
           <div className="social-icons">
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://instagram.com" target="_blank">
               <i className="fab fa-instagram"></i>
             </a>
           </div>
           <div className="social-icons">
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com" target="_blank">
               <i className="fab fa-twitter"></i>
             </a>
           </div>
           <div className="social-icons">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://facebook.com" target="_blank">
               <i className="fab fa-facebook"></i>
             </a>
           </div>
           <div className="social-icons">
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://linkedin.com" target="_blank">
               <i className="fab fa-linkedin"></i>
             </a>
           </div>
@@ -61,7 +49,7 @@ const Footer = () => {
         </div>
         {/**  right section*/}
         <div className="footer-right">
-          <h4>Contact</h4>
+          <h4>Contact Us</h4>
           <form className="contact-form">
             <input type="text" placeholder="Full names" required />
             <input type="email" placeholder="Email" required />
