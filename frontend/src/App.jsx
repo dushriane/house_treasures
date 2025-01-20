@@ -6,6 +6,7 @@ import SignIn from "./pages/login.jsx";
 import AboutUs from "./pages/aboutUs.jsx";
 import Listings from "./pages/listings.jsx";
 import SellItem from "./pages/postItem.jsx";
+import ListingDetail from "./pages/onelisting.jsx";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
 
         {/* Sell an Item Route */}
         <Route path="/postItem" element={<SellItem />} />
+        <Route path="/onelisting" element={<ListingDetail />} />
       </Routes>
     </Router>
   );
