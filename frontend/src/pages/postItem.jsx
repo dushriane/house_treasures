@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./postItem.css";
 import Footer from "../components/footer.jsx";
 import SignedHeader from "../components/header.jsx";
+import axios from "axios";
 
 const SellItem = () => {
   const [formData, setFormData] = useState({
@@ -14,45 +15,39 @@ const SellItem = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleImageUpload = (e) => {
-    setFormData({ ...formData, image: e.target.files[0] });
+    setFormData((prevData) => ({
+      ...prevData,
+      image: e.target.files[0],
+    }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ try {
+      // Create a FormData object to handle image file upload
+      const data = new FormData();
+      data.append("title", formData.title);
+      data.append("description", formData.description);
+      data.append("category", formData.category);
+      data.append("price", formData.price);
+      data.append("image", formData.image);
 
-    const data = new FormData();
-    data.append("title", formData.title);
-    data.append("description", formData.description);
-    data.append("category", formData.category);
-    data.append("price", formData.price);
-    data.append("image", formData.image);
-
-    try {
-      const response = await fetch("/api/items", {
-        method: "POST",
-        body: data,
+      // Send POST request to the backend
+      const response = await axios.post("http://localhost:8080/api/items", data, {
+        headers: {"Content-Type": "multipart/form-data",
+        },
       });
 
-      if (response.ok) {
-        const result = await response.json();
-        console.log("Item posted successfully:", result);
-
-        setFormData({
-          title: "",
-          description: "",
-          category: "",
-          price: "",
-          image: null,
-        });
-      } else {
-        console.error("Failed to post item:", response.statusText);
-      }
+      // Display success message
+      setMessage(response.data);
     } catch (error) {
-      console.error("Error posting item", error);
+      console.error("Error adding item:", error);
+      setMessage("Failed to add item. Please try again.");
     }
   };
 
@@ -63,6 +58,9 @@ const SellItem = () => {
       <p className="sell-item-subtitle">
         Turn your unused items into extra cash!
       </p>
+      
+      {message && <p className="message">{message}</p>}
+      
       <form className="sell-item-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="title">Item Title</label>
