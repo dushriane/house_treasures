@@ -1,2 +1,4 @@
 # house_treasures
-Web tech project
+Let's declutter the junk that would be lying around in the house. 
+
+### A work in progress
