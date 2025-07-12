@@ -32,10 +32,10 @@ const Listings = () => {
     // Add more listings as needed
   ];
 
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn] = useState(false);
   return (
     <div className="listings-container">
-      {isSignedIn ? <SignedHeader /> : <Header />}
+      {isSignedIn ? <Header /> : <Header />}
       <main className="listings-main">
         <h1>Available Listings</h1>
         <div className="listings-grid">

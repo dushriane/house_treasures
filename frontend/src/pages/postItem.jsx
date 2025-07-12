@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./postItem.css";
-import Footer from "../components/footer.jsx";
-import SignedHeader from "../components/header.jsx";
+import Footer from "../components/footer";
+import Header from "../components/headerHomepage";
 import axios from "axios";
 
 const SellItem = () => {
@@ -12,6 +12,7 @@ const SellItem = () => {
     price: "",
     image: null,
   });
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +29,9 @@ const SellItem = () => {
     }));
   };
 
- try {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
       // Create a FormData object to handle image file upload
       const data = new FormData();
       data.append("title", formData.title);
@@ -53,7 +56,7 @@ const SellItem = () => {
 
   return (
     <div className="sell-item-container">
-      <SignedHeader className="signed-header" />
+      <Header className="signed-header" />
       <h1 className="sell-item-title">Sell Your Treasure</h1>
       <p className="sell-item-subtitle">
         Turn your unused items into extra cash!

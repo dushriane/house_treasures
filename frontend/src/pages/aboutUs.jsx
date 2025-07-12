@@ -4,10 +4,10 @@ import Footer from "../components/footer";
 import Header from "../components/headerHomepage";
 
 const AboutUs = () => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn] = useState(false);
   return (
     <div className="about-container">
-      {isSignedIn ? <SignedHeader /> : <Header />}
+      {isSignedIn ? <Header /> : <Header />}
       <main className="about-main">
         <section className="about-header">
           <h1>About Us</h1>
@@ -18,8 +18,8 @@ const AboutUs = () => {
             <h2>Our Mission</h2>
             <p>
               Our goal is to create a seamless and trusted platform where users
-              can buy or sell pre-loved items. Whether you’re looking to
-              declutter your home or find hidden treasures, we’ve got you
+              can buy or sell pre-loved items. Whether you're looking to
+              declutter your home or find hidden treasures, we've got you
               covered.
             </p>
           </div>
