@@ -48,14 +48,14 @@ const PublicRoute = ({ children }) => {
 };
 
 function AppContent() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   return (
     <Router>
       <div className="App">
         <Navbar />
         <main className="main-content">
-          <Routes>
+      <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
             <Route path="/items" element={<ItemList />} />
@@ -139,7 +139,7 @@ function AppContent() {
             
             {/* 404 Route */}
             <Route path="*" element={<NotFound />} />
-          </Routes>
+      </Routes>
         </main>
         <Footer />
         <Toaster 

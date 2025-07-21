@@ -20,16 +20,15 @@ export const AuthProvider = ({ children }) => {
     checkAuthStatus();
   }, []);
 
+  // For session-based auth, just check if user info is in localStorage
   const checkAuthStatus = async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const response = await authAPI.getCurrentUser();
-        setUser(response.data);
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        setUser(JSON.parse(userStr));
       }
     } catch (error) {
       console.error('Auth check failed:', error);
-      localStorage.removeItem('token');
       localStorage.removeItem('user');
     } finally {
       setLoading(false);
@@ -39,12 +38,10 @@ export const AuthProvider = ({ children }) => {
   const login = async (credentials) => {
     try {
       const response = await authAPI.login(credentials);
-      const { token, user: userData } = response.data;
-      
-      localStorage.setItem('token', token);
+      const userData = response.data;
+      // No token logic, just store user info
       localStorage.setItem('user', JSON.stringify(userData));
       setUser(userData);
-      
       toast.success('Login successful!');
       return { success: true };
     } catch (error) {
@@ -57,12 +54,10 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       const response = await authAPI.register(userData);
-      const { token, user: newUser } = response.data;
-      
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(newUser));
-      setUser(newUser);
-      
+      // For session-based, just store user info if returned
+      // If backend does not auto-login, you may want to redirect to login page instead
+      // localStorage.setItem('user', JSON.stringify(response.data));
+      // setUser(response.data);
       toast.success('Registration successful!');
       return { success: true };
     } catch (error) {
@@ -78,7 +73,6 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
-      localStorage.removeItem('token');
       localStorage.removeItem('user');
       setUser(null);
       toast.success('Logged out successfully');
