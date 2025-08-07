@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button, Carousel, Badge } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { itemsAPI, categoriesAPI } from '../services/api';
@@ -71,7 +71,7 @@ const Home = () => {
             <Col lg={6} className="hero-image">
               <div className="hero-image-container">
                 <img 
-                  src="/images/hero-illustration.svg" 
+                  src="/images/hero-illustration.jpg" 
                   alt="House Treasures" 
                   className="img-fluid"
                 />
@@ -155,7 +155,7 @@ const Home = () => {
                   <div className="item-image-container">
                     <Card.Img 
                       variant="top" 
-                      src={item.imageUrls?.[0] || '/images/placeholder-item.jpg'} 
+                      src={item.imageUrls?.[0] || '/images/pictureOne.png'} 
                       alt={item.title}
                     />
                     <Badge bg="success" className="item-status">
