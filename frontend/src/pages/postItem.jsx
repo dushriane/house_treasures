@@ -9,7 +9,20 @@ const SellItem = () => {
     description: "",
     category: "",
     price: "",
-    image: null,
+    condition: "",
+    brand: "",
+    model: "",
+    yearOfPurchase: "",
+    originalReceipt: null,
+    pickupProvince: "",
+    pickupDistrict: "",
+    pickupSector: "",
+    pickupCell: "",
+    pickupVillage: "",
+    pickupAddress: "",
+    images: [], // for multiple images
+    isNegotiable: true,
+    minimumPrice: "",
   });
   const [message, setMessage] = useState("");
 
@@ -21,12 +34,22 @@ const SellItem = () => {
     }));
   };
 
-  const handleImageUpload = (e) => {
+  // Handle single file (original receipt)
+  const handleFileUpload = (e) => {
     setFormData((prevData) => ({
       ...prevData,
-      image: e.target.files[0],
+      originalReceipt: e.target.files[0],
     }));
   };
+
+  // Handle multiple images
+  const handleImagesUpload = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      images: Array.from(e.target.files),
+    }));
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,11 +60,36 @@ const SellItem = () => {
       data.append("description", formData.description);
       data.append("category", formData.category);
       data.append("price", formData.price);
-      data.append("image", formData.image);
+      data.append("condition", formData.condition);
+      data.append("brand", formData.brand);
+      data.append("model", formData.model);
+      data.append("yearOfPurchase", formData.yearOfPurchase);
+      data.append("pickupProvince", formData.pickupProvince);
+      data.append("pickupDistrict", formData.pickupDistrict);
+      data.append("pickupSector", formData.pickupSector);
+      data.append("pickupCell", formData.pickupCell);
+      data.append("pickupVillage", formData.pickupVillage);
+      data.append("pickupAddress", formData.pickupAddress);
+      data.append("isNegotiable", formData.isNegotiable);
+      data.append("minimumPrice", formData.minimumPrice);
+
+
+      // Append original receipt if present
+      if (formData.originalReceipt) {
+        data.append("originalReceipt", formData.originalReceipt);
+      }
+
+      // Append all images
+      if (formData.images && formData.images.length > 0) {
+        formData.images.forEach((img, idx) => {
+          data.append("images", img);
+        });
+      }
 
       // Send POST request to the backend
       const response = await axios.post("http://localhost:8080/api/items", data, {
-        headers: {"Content-Type": "multipart/form-data",
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
       });
 
@@ -104,6 +152,59 @@ const SellItem = () => {
           </select>
         </div>
         <div className="form-group">
+          <label htmlFor="condition">Condition</label>
+          <select
+            id="condition"
+            name="condition"
+            value={formData.condition}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select condition</option>
+            <option value="NEW">New</option>
+            <option value="LIKE_NEW">Like New</option>
+            <option value="GOOD">Good</option>
+            <option value="FAIR">Fair</option>
+            <option value="POOR">Poor</option>
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="brand">Brand</label>
+          <input
+            type="text"
+            id="brand"
+            name="brand"
+            value={formData.brand}
+            onChange={handleChange}
+            placeholder="Brand (optional)"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="model">Model</label>
+          <input
+            type="text"
+            id="model"
+            name="model"
+            value={formData.model}
+            onChange={handleChange}
+            placeholder="Model (optional)"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="yearOfPurchase">Year of Purchase</label>
+          <input
+            type="number"
+            id="yearOfPurchase"
+            name="yearOfPurchase"
+            value={formData.yearOfPurchase}
+            onChange={handleChange}
+            placeholder="Year of purchase"
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="price">Price (USD)</label>
           <input
             type="number"
@@ -116,14 +217,112 @@ const SellItem = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="image">Upload Image</label>
+          <label htmlFor="originalReceipt">Original Receipt (optional)</label>
           <input
             type="file"
-            id="image"
-            name="image"
-            onChange={handleImageUpload}
-            accept="image/*"
+            id="originalReceipt"
+            name="originalReceipt"
+            onChange={handleFileUpload} // implement this handler
+            accept="image/*,application/pdf"
+          />
+        </div>
+
+        {/* Pickup Location Fields */}
+        <div className="form-group">
+          <label htmlFor="pickupProvince">Pickup Province</label>
+          <input
+            type="text"
+            id="pickupProvince"
+            name="pickupProvince"
+            value={formData.pickupProvince}
+            onChange={handleChange}
             required
+          />
+        </div>
+        {/* Pickup Location Fields */}
+        <div className="form-group">
+          <label htmlFor="pickupDistrict">Pickup District</label>
+          <input
+            type="text"
+            id="pickupDistrict"
+            name="pickupDistrict"
+            value={formData.pickupDistrict}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        {/* Pickup Location Fields */}
+        <div className="form-group">
+          <label htmlFor="pickupSector">Pickup Sector</label>
+          <input
+            type="text"
+            id="pickupSector"
+            name="pickupSector"
+            value={formData.pickupSector}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        {/* Pickup Location Fields */}
+        <div className="form-group">
+          <label htmlFor="pickupCell">Pickup Cell</label>
+          <input
+            type="text"
+            id="pickupCell"
+            name="pickupCell"
+            value={formData.pickupCell}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        {/* Pickup Location Fields */}
+        <div className="form-group">
+          <label htmlFor="pickupVillage">Pickup Village</label>
+          <input
+            type="text"
+            id="pickupVillage"
+            name="pickupVillage"
+            value={formData.pickupVillage}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="images">Upload Images</label>
+          <input
+            type="file"
+            id="images"
+            name="images"
+            onChange={handleImagesUpload} // implement this handler for multiple files
+            accept="image/*"
+            multiple
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>
+            <input
+              type="checkbox"
+              name="isNegotiable"
+              checked={formData.isNegotiable}
+              onChange={e => setFormData(prev => ({ ...prev, isNegotiable: e.target.checked }))}
+            />
+            Negotiable
+          </label>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="minimumPrice">Minimum Price (if negotiable)</label>
+          <input
+            type="number"
+            id="minimumPrice"
+            name="minimumPrice"
+            value={formData.minimumPrice}
+            onChange={handleChange}
+            placeholder="Minimum price"
+            disabled={!formData.isNegotiable}
           />
         </div>
         <button type="submit" className="submit-button">
