@@ -10,7 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 // @EnableWebSecurity
 public class SecurityConfig {
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .cors(cors -> {})
             .csrf(csrt -> csrt.disable())

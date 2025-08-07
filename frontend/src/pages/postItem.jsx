@@ -227,67 +227,6 @@ const SellItem = () => {
           />
         </div>
 
-        {/* Pickup Location Fields */}
-        <div className="form-group">
-          <label htmlFor="pickupProvince">Pickup Province</label>
-          <input
-            type="text"
-            id="pickupProvince"
-            name="pickupProvince"
-            value={formData.pickupProvince}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Pickup Location Fields */}
-        <div className="form-group">
-          <label htmlFor="pickupDistrict">Pickup District</label>
-          <input
-            type="text"
-            id="pickupDistrict"
-            name="pickupDistrict"
-            value={formData.pickupDistrict}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Pickup Location Fields */}
-        <div className="form-group">
-          <label htmlFor="pickupSector">Pickup Sector</label>
-          <input
-            type="text"
-            id="pickupSector"
-            name="pickupSector"
-            value={formData.pickupSector}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Pickup Location Fields */}
-        <div className="form-group">
-          <label htmlFor="pickupCell">Pickup Cell</label>
-          <input
-            type="text"
-            id="pickupCell"
-            name="pickupCell"
-            value={formData.pickupCell}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Pickup Location Fields */}
-        <div className="form-group">
-          <label htmlFor="pickupVillage">Pickup Village</label>
-          <input
-            type="text"
-            id="pickupVillage"
-            name="pickupVillage"
-            value={formData.pickupVillage}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
         <div className="form-group">
           <label htmlFor="images">Upload Images</label>
           <input

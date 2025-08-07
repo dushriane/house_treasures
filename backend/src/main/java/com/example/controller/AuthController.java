@@ -3,7 +3,7 @@ package com.example.controller;
 import com.example.model.User;
 import com.example.repository.UserRepository;
 import com.example.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
+    //@Autowired
     public AuthController(UserService userService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.userRepository = userRepository;
