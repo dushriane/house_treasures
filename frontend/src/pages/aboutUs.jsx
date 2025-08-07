@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./aboutUs.css";
-import Footer from "../components/footer";
-import Header from "../components/headerHomepage";
+import Navbar from "../components/layout/Navbar";
 
 const AboutUs = () => {
-  const [isSignedIn] = useState(false);
   return (
     <div className="about-container">
-      {isSignedIn ? <Header /> : <Header />}
+      <Navbar />
       <main className="about-main">
         <section className="about-header">
           <h1>About Us</h1>
@@ -41,7 +39,6 @@ const AboutUs = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };

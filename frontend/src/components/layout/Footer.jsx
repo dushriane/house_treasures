@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaHome, FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaHome, FaPhone, FaEnvelope, FaMapMarkerAlt, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
@@ -20,14 +20,32 @@ const Footer = () => {
                 and sell your treasures directly through secure mobile money payments.
               </p>
               <div className="social-links">
-                <a href="#" className="social-link">
-                  <FaFacebook />
+                <a
+                  href="https://github.com/dushriane"
+                  className="social-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <FaGithub />
                 </a>
-                <a href="#" className="social-link">
+                <a
+                  href="https://x.com/ArianeDshm"
+                  className="social-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
+                >
                   <FaTwitter />
                 </a>
-                <a href="#" className="social-link">
-                  <FaInstagram />
+                <a
+                  href="https://linkedin.com/in/ariane-dushime"
+                  className="social-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin />
                 </a>
               </div>
             </div>

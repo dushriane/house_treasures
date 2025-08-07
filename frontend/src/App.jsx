@@ -15,9 +15,9 @@ import Home from './pages/Home';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Dashboard from './pages/Dashboard';
-import ItemList from './pages/items/ItemList';
-import ItemDetail from './pages/items/ItemDetail';
-import CreateItem from './pages/items/CreateItem';
+import Listings from './pages/listings';
+import ListingDetail from './pages/onelisting';
+import SellItem from './pages/postItem';
 import EditItem from './pages/items/EditItem';
 import Profile from './pages/Profile';
 import Messages from './pages/Messages';
@@ -58,9 +58,9 @@ function AppContent() {
       <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
-            <Route path="/items" element={<ItemList />} />
-            <Route path="/items/:id" element={<ItemDetail />} />
-            
+            <Route path="/items" element={<Listings />} />
+            <Route path="/items/:id" element={<ListingDetail />} />
+
             {/* Auth Routes */}
             <Route 
               path="/login" 
@@ -100,7 +100,7 @@ function AppContent() {
               path="/create-item" 
               element={
                 <ProtectedRoute>
-                  <CreateItem />
+                  <SellItem />
                 </ProtectedRoute>
               } 
             />

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./postItem.css";
-import Footer from "../components/footer";
-import Header from "../components/headerHomepage";
+import Navbar from "../components/layout/Navbar";
 import axios from "axios";
 
 const SellItem = () => {
@@ -56,7 +55,7 @@ const SellItem = () => {
 
   return (
     <div className="sell-item-container">
-      <Header className="signed-header" />
+      <Navbar />
       <h1 className="sell-item-title">Sell Your Treasure</h1>
       <p className="sell-item-subtitle">
         Turn your unused items into extra cash!
@@ -131,7 +130,6 @@ const SellItem = () => {
           Post Item
         </button>
       </form>
-      <Footer />
     </div>
   );
 };

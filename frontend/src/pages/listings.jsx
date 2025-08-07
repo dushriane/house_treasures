@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./listings.css";
-import Footer from "../components/footer";
-import Header from "../components/headerHomepage";
+import  Navbar  from "../components/layout/Navbar";
 
 const Listings = () => {
   const listingsData = [
@@ -32,10 +31,9 @@ const Listings = () => {
     // Add more listings as needed
   ];
 
-  const [isSignedIn] = useState(false);
   return (
     <div className="listings-container">
-      {isSignedIn ? <Header /> : <Header />}
+      <Navbar />
       <main className="listings-main">
         <h1>Available Listings</h1>
         <div className="listings-grid">
@@ -55,7 +53,6 @@ const Listings = () => {
           ))}
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
