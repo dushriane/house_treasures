@@ -50,7 +50,7 @@ public class Item {
     private String pickupVillage;
     private String pickupAddress;
 
-    // Images
+    // Item Images table in db 
     @ElementCollection
     @CollectionTable(name = "item_images", joinColumns = @JoinColumn(name = "item_id"))
     @Column(name = "image_url")

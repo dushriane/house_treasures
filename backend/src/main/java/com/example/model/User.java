@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,6 +33,9 @@ public class User {
     @Column(nullable = false)
     private String phoneNumber;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private UserProfile userProfile;
+
     // Mobile money information for Rwanda
     private String mtnMobileMoneyNumber;
     private String airtelMoneyNumber;
@@ -48,7 +50,6 @@ public class User {
 
     // Account status
     private Boolean isActive = true;
-    private Boolean isVerified = false;
     private String verificationToken;
 
     // Timestamps

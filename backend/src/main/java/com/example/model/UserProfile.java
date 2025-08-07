@@ -34,7 +34,6 @@ public class UserProfile {
     private Boolean emailVerified = false;
     private Boolean phoneVerified = false;
     private Boolean identityVerified = false; // ID verification
-    private String verificationToken;
     private LocalDateTime emailVerifiedAt;
     private LocalDateTime phoneVerifiedAt;
     private LocalDateTime identityVerifiedAt;
